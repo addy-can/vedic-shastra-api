@@ -1,7 +1,6 @@
 import express, { Application } from 'express';
 import dotenv from 'dotenv';
 import scriptureRoutes from './routes/scriptureRoutes';
-import getScriptureRoute from './routes/getScripture';
 import { notFound, errorHandler } from './middleware/errorMiddleware';
 import { setupSwagger } from './utils/swagger';
 import cors from 'cors';
@@ -15,7 +14,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/scriptures', scriptureRoutes);
-app.use('/api/getScripture', getScriptureRoute);
 
 app.use(notFound);
 app.use(errorHandler);
