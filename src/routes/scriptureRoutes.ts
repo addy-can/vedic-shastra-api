@@ -22,10 +22,6 @@ router.get('/ping', (req, res) => {
 router.get('/', getAllScriptures);
 router.post('/', addScripture); // Unprotected for now
 
-router.post(
-  '/lookup',
-  validateRequest(scriptureValidationSchema as Joi.Schema),
-  getScriptureAnswer
-);
+router.post('/lookup', getScriptureAnswer);
 
 export default router;
