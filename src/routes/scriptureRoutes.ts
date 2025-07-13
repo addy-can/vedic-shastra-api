@@ -1,4 +1,5 @@
 import express from 'express';
+import Joi from 'joi';
 import { getAllScriptures, addScripture, getScriptureAnswer } from '../controllers/scriptureController';
 import { validateRequest } from '../middleware/validateRequest';
 import { scriptureValidationSchema } from '../validators/scriptureValidator';
@@ -21,6 +22,10 @@ router.get('/ping', (req, res) => {
 router.get('/', getAllScriptures);
 router.post('/', protect, addScripture); // Only authenticated users can add
 
-router.post('/scriptures', validateRequest(scriptureValidationSchema), getScriptureAnswer);
+router.post(
+  '/scriptures',
+  validateRequest(scriptureValidationSchema as Joi.Schema),
+  getScriptureAnswer
+);
 
 export default router;
