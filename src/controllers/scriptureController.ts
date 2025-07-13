@@ -27,3 +27,23 @@ export const addScripture = async (req: Request, res: Response): Promise<void> =
         res.status(500).json({ message: 'Failed to add scripture' });
     }
 };
+
+export const getScriptureAnswer = async (req: Request, res: Response): Promise<void> => {
+    const { question, context } = req.body;
+
+    if (!question) {
+        res.status(400).json({ message: 'Missing question in request body.' });
+        return;
+    }
+
+    // Simple mock logic to demonstrate response
+    const answer = {
+        question,
+        context,
+        verse: 'Bhagavad Gita 2.47',
+        teaching: 'You have a right to perform your duty, but not to the fruits thereof.',
+        guidance: 'Focus on your dharma without attachment to results.'
+    };
+
+    res.status(200).json(answer);
+};
