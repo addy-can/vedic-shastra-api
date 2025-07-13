@@ -23,7 +23,7 @@ router.get('/', getAllScriptures);
 router.post('/', protect, addScripture); // Only authenticated users can add
 
 router.post(
-  '/',
+  '/lookup',
   validateRequest(scriptureValidationSchema as Joi.Schema),
   getScriptureAnswer
 );
